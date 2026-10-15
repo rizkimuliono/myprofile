@@ -1,8 +1,638 @@
-<html>
-  <head>
-    <title>My Profile</title>
-  </head>
-  <body>
-    <h1>This is My Profile Pages!</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Saipul Sihotang | Academic Portfolio</title>
+    <style>
+        :root {
+            --bg: #07111f;
+            --card: #0d1b2d;
+            --text: #f7f9fc;
+            --muted: #9dadc1;
+            --cyan: #4ee4d1;
+            --blue: #559cff;
+            --line: #20324a
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: Inter, system-ui, sans-serif;
+            background: radial-gradient(circle at 10% 5%, #102b4b 0, transparent 30%), var(--bg);
+            color: var(--text);
+            line-height: 1.7
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .wrap {
+            width: min(1120px, 90%);
+            margin: auto
+        }
+
+        nav {
+            position: fixed;
+            z-index: 10;
+            width: 100%;
+            background: #07111fd9;
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line)
+        }
+
+        nav .wrap {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .brand {
+            font-weight: 900
+        }
+
+        .brand b {
+            color: var(--cyan)
+        }
+
+        .links {
+            display: flex;
+            gap: 25px;
+            color: #c8d3df;
+            font-size: 14px
+        }
+
+        .links a:hover {
+            color: var(--cyan)
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 110px 0 70px
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 70px;
+            align-items: center
+        }
+
+        .eyebrow {
+            color: var(--cyan);
+            font-weight: 800;
+            letter-spacing: .17em;
+            text-transform: uppercase;
+            font-size: 12px
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 8vw, 100px);
+            line-height: .92;
+            letter-spacing: -.065em;
+            margin: 16px 0 28px
+        }
+
+        .hero h1 span {
+            display: block;
+            background: linear-gradient(90deg, #fff, #9bcaff, var(--cyan));
+            -webkit-background-clip: text;
+            color: transparent
+        }
+
+        .lead {
+            color: #adbbcc;
+            font-size: 18px;
+            max-width: 650px
+        }
+
+        .lead strong {
+            color: white
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 32px
+        }
+
+        .btn {
+            padding: 13px 20px;
+            border-radius: 13px;
+            font-weight: 800;
+            border: 1px solid var(--line)
+        }
+
+        .primary {
+            background: var(--cyan);
+            color: #06131d;
+            border: 0
+        }
+
+        .portrait {
+            border: 1px solid var(--line);
+            padding: 14px;
+            border-radius: 32px;
+            background: #ffffff0a;
+            box-shadow: 0 30px 80px #0007
+        }
+
+        .photo {
+            height: 520px;
+            border-radius: 23px;
+            background: linear-gradient(145deg, #183a5f, #0a1727);
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .initial {
+            width: 240px;
+            height: 300px;
+            border-radius: 48% 48% 30% 30%;
+            background: linear-gradient(145deg, #274f77, #10233a);
+            display: grid;
+            place-items: center;
+            font-size: 85px;
+            font-weight: 900;
+            color: #acd5ff
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            padding: 15px;
+            background: #07111fdc;
+            border: 1px solid var(--line);
+            border-radius: 15px
+        }
+
+        .caption small {
+            color: var(--muted)
+        }
+
+        section {
+            padding: 100px 0
+        }
+
+        .head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 35px;
+            margin-bottom: 42px
+        }
+
+        .head h2 {
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.05;
+            letter-spacing: -.045em
+        }
+
+        .head p {
+            max-width: 500px;
+            color: var(--muted)
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid var(--line);
+            border-radius: 25px;
+            overflow: hidden
+        }
+
+        .stat {
+            padding: 28px;
+            border-right: 1px solid var(--line)
+        }
+
+        .stat:last-child {
+            border: 0
+        }
+
+        .stat b {
+            font-size: 22px;
+            display: block
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px
+        }
+
+        .card {
+            padding: 28px;
+            background: #ffffff08;
+            border: 1px solid var(--line);
+            border-radius: 23px;
+            transition: .25s
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #4ee4d177
+        }
+
+        .icon {
+            font-size: 28px;
+            margin-bottom: 45px
+        }
+
+        .card small {
+            color: var(--cyan);
+            font-weight: 800
+        }
+
+        .card h3 {
+            margin: 6px 0 9px
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px
+        }
+
+        .project {
+            min-height: 300px;
+            padding: 32px;
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            background: linear-gradient(145deg, #559cff15, #ffffff07)
+        }
+
+        .project h3 {
+            font-size: 24px;
+            line-height: 1.25;
+            margin: 14px 0
+        }
+
+        .project p {
+            color: var(--muted)
+        }
+
+        .tag {
+            color: var(--cyan);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: .13em
+        }
+
+        .chips {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-top: 20px
+        }
+
+        .chip {
+            padding: 5px 9px;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #c5d1df
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 18px
+        }
+
+        .quote {
+            font-size: 24px;
+            color: white !important
+        }
+
+        .timeline {
+            border-left: 1px solid var(--line);
+            margin-left: 7px
+        }
+
+        .item {
+            padding: 0 0 38px 30px;
+            position: relative
+        }
+
+        .item:before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 7px;
+            width: 13px;
+            height: 13px;
+            background: var(--cyan);
+            border-radius: 50%
+        }
+
+        .item small {
+            color: var(--cyan);
+            font-weight: 800
+        }
+
+        .item p {
+            color: var(--muted)
+        }
+
+        .contact {
+            text-align: center;
+            border: 1px solid var(--line);
+            border-radius: 30px;
+            padding: 70px 30px;
+            background: radial-gradient(circle at top, #559cff20, transparent 50%), #ffffff06
+        }
+
+        .contact h2 {
+            font-size: clamp(40px, 6vw, 70px);
+            line-height: 1.05
+        }
+
+        .contact p {
+            max-width: 650px;
+            color: var(--muted);
+            margin: 20px auto
+        }
+
+        footer {
+            padding: 35px 0;
+            color: #7f90a5;
+            border-top: 1px solid var(--line);
+            font-size: 13px
+        }
+
+        @media(max-width:850px) {
+
+            .hero-grid,
+            .about {
+                grid-template-columns: 1fr
+            }
+
+            .grid3 {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .projects {
+                grid-template-columns: 1fr
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .links {
+                display: none
+            }
+
+            .head {
+                align-items: start;
+                flex-direction: column
+            }
+
+            .portrait {
+                max-width: 550px;
+                margin: auto
+            }
+        }
+
+        @media(max-width:550px) {
+
+            .grid3,
+            .stats {
+                grid-template-columns: 1fr
+            }
+
+            .photo {
+                height: 430px
+            }
+
+            .hero h1 {
+                font-size: 58px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="wrap"><a href="#home" class="brand">SAIPUL<b>.</b></a>
+            <div class="links"><a href="#about">Tentang</a><a href="#expertise">Keahlian</a><a
+                    href="#research">Riset</a><a href="#journey">Perjalanan</a><a href="#contact">Kontak</a></div>
+        </div>
+    </nav>
+    <header class="hero" id="home">
+        <div class="wrap hero-grid">
+            <div>
+                <div class="eyebrow">Lecturer · Researcher · Academic Leader</div>
+                <h1>Saipul <span>Sihotang.</span></h1>
+                <p class="lead">Dosen dan peneliti yang bekerja di persimpangan <strong>bioteknologi mikroba
+                        tanaman</strong>, pertanian berkelanjutan, pendidikan, dan teknologi untuk menghasilkan solusi
+                    yang berdampak.</p>
+                <div class="buttons"><a class="btn primary" href="#research">Lihat Riset Unggulan →</a><a class="btn"
+                        href="#contact">Hubungi Saya</a></div>
+            </div>
+            <div class="portrait">
+                <div class="photo">
+                    <div class="initial">SS</div>
+                    <div class="caption"><b>Saipul Sihotang, S.Si., M.Biotek.</b><br><small>Universitas Medan Area ·
+                            Medan, Indonesia</small></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="wrap">
+            <div class="stats">
+                <div class="stat"><b>Research</b><span>Bioteknologi mikroba & bioinput</span></div>
+                <div class="stat"><b>Teaching</b><span>Biologi pertanian & teknologi</span></div>
+                <div class="stat"><b>Editorial</b><span>Publikasi dan pengelolaan jurnal</span></div>
+                <div class="stat"><b>Impact</b><span>Akademik, mahasiswa & masyarakat</span></div>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <div class="wrap">
+            <div class="head">
+                <div>
+                    <div class="eyebrow">Tentang Saya</div>
+                    <h2>Ilmu yang bergerak<br>menuju dampak nyata.</h2>
+                </div>
+                <p>Pendidikan dan penelitian adalah proses membangun solusi yang dapat diuji, dikembangkan, dan memberi
+                    manfaat.</p>
+            </div>
+            <div class="about">
+                <div class="card">
+                    <p class="quote">“Menghubungkan sains, teknologi, dan pendidikan untuk menciptakan inovasi yang
+                        relevan bagi pertanian dan masyarakat.”</p>
+                </div>
+                <div class="card">
+                    <h3>Profil Akademik</h3>
+                    <p>Berafiliasi dengan Universitas Medan Area, saya aktif dalam pengajaran, penelitian, pengembangan
+                        mahasiswa, kegiatan editorial, dan program institusi. Fokus riset mencakup bakteri endofit, PGP,
+                        biofertilizer, kultur jaringan, serta bioteknologi pertanian berkelanjutan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="expertise">
+        <div class="wrap">
+            <div class="head">
+                <div>
+                    <div class="eyebrow">Bidang Keahlian</div>
+                    <h2>Research meets technology.</h2>
+                </div>
+                <p>Portofolio lintas bidang yang menggabungkan ilmu hayati, teknologi, pendidikan, dan inovasi.</p>
+            </div>
+            <div class="grid3">
+                <div class="card">
+                    <div class="icon">🧬</div><small>BIOTECHNOLOGY</small>
+                    <h3>Bioteknologi Mikroba</h3>
+                    <p>Endofit, PGP, dan interaksi tanaman–mikroba.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🌱</div><small>AGRICULTURE</small>
+                    <h3>Biofertilizer & Bioinput</h3>
+                    <p>Bioinput untuk nutrisi, vigor, dan pertumbuhan tanaman.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🔬</div><small>PLANT SCIENCE</small>
+                    <h3>Kultur Jaringan</h3>
+                    <p>Regenerasi in vitro dan perbanyakan tanaman.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🧪</div><small>RESEARCH</small>
+                    <h3>Molekuler & Metabolomik</h3>
+                    <p>Karakterisasi molekuler dan analisis metabolit.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">☁️</div><small>TECHNOLOGY</small>
+                    <h3>Cloud & DevOps</h3>
+                    <p>Cloud, CI/CD, container, deployment, dan DevOps.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🎓</div><small>EDUCATION</small>
+                    <h3>Academic Development</h3>
+                    <p>OBE–SCL, pembimbingan, riset, dan publikasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="research">
+        <div class="wrap">
+            <div class="head">
+                <div>
+                    <div class="eyebrow">Selected Research</div>
+                    <h2>Riset unggulan.</h2>
+                </div>
+                <p>Beberapa arah penelitian yang merepresentasikan fokus sains dan inovasi.</p>
+            </div>
+            <div class="projects">
+                <article class="project">
+                    <div class="tag">ENDOPHYTE RESEARCH</div>
+                    <h3>Bakteri Endofit Kaliandra untuk Biofertilizer Adaptif Cabai</h3>
+                    <p>Eksplorasi karakter PGP, identifikasi molekuler, metabolomik, dan seleksi isolat potensial.</p>
+                    <div class="chips"><span class="chip">Endophyte</span><span class="chip">16S rRNA</span><span
+                            class="chip">PGP</span><span class="chip">Metabolomics</span></div>
+                </article>
+                <article class="project">
+                    <div class="tag">SUSTAINABLE AGRICULTURE</div>
+                    <h3>Bioformulasi Mikroba untuk Pertanian Berkelanjutan</h3>
+                    <p>Pengembangan mikroba bermanfaat untuk mendukung vigor tanaman, efisiensi input, dan pengendalian
+                        hayati.</p>
+                    <div class="chips"><span class="chip">Biofertilizer</span><span class="chip">Trichoderma</span><span
+                            class="chip">Biochar</span></div>
+                </article>
+                <article class="project">
+                    <div class="tag">PLANT BIOTECHNOLOGY</div>
+                    <h3>Kultur Jaringan & Kemandirian Bahan Tanam</h3>
+                    <p>Regenerasi in vitro dan penguatan ketersediaan bahan tanam berkualitas.</p>
+                    <div class="chips"><span class="chip">In Vitro</span><span class="chip">Plantlet</span><span
+                            class="chip">Regeneration</span></div>
+                </article>
+                <article class="project">
+                    <div class="tag">DIGITAL EDUCATION</div>
+                    <h3>Integrasi Teknologi dalam Pembelajaran</h3>
+                    <p>Materi berbasis proyek pada cloud, DevOps, web, dan teknologi digital.</p>
+                    <div class="chips"><span class="chip">Cloud</span><span class="chip">DevOps</span><span
+                            class="chip">Web</span><span class="chip">OBE–SCL</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <section id="journey">
+        <div class="wrap">
+            <div class="head">
+                <div>
+                    <div class="eyebrow">Academic Journey</div>
+                    <h2>Belajar. Meneliti.<br>Mengembangkan.</h2>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="item"><small>01 · EDUCATION</small>
+                    <h3>Biologi & Bioteknologi</h3>
+                    <p>Fondasi ilmu hayati yang berkembang menuju bioteknologi dan riset mikroba tanaman.</p>
+                </div>
+                <div class="item"><small>02 · TEACHING</small>
+                    <h3>Dosen & Pembimbing</h3>
+                    <p>Pembelajaran, praktikum, proyek mahasiswa, dan kegiatan akademik lintas bidang.</p>
+                </div>
+                <div class="item"><small>03 · RESEARCH</small>
+                    <h3>Penelitian & Publikasi</h3>
+                    <p>Riset bioteknologi pertanian dengan orientasi publikasi, inovasi, dan kebermanfaatan.</p>
+                </div>
+                <div class="item"><small>04 · LEADERSHIP</small>
+                    <h3>Academic Leadership</h3>
+                    <p>Pengembangan akademik, editorial, SDM, dan institusi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="wrap">
+            <div class="contact">
+                <div class="eyebrow">Let's Collaborate</div>
+                <h2>Mari membangun sesuatu yang bermakna.</h2>
+                <p>Terbuka untuk kolaborasi penelitian, publikasi ilmiah, inovasi pertanian, dan proyek pendidikan
+                    berbasis teknologi.</p>
+                <div class="buttons" style="justify-content:center"><a class="btn primary"
+                        href="mailto:emailanda@example.com">✉ Kirim Email</a><a class="btn" href="#home">Kembali ke Atas
+                        ↑</a></div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="wrap">© <span id="year"></span> Saipul Sihotang · Single-file static portfolio.</div>
+    </footer>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+
 </html>
